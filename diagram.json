@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "author": "Ali Rashidi",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-nano", "id": "nano", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring1",
+      "top": -268.16,
+      "left": -37.21,
+      "attrs": { "pixels": "16" }
+    },
+    {
+      "type": "wokwi-ir-receiver",
+      "id": "ir1",
+      "top": -102.18,
+      "left": 147.15,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-ir-remote",
+      "id": "remote1",
+      "top": -211.2,
+      "left": 326.4,
+      "rotate": -90,
+      "attrs": {}
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 39.16, "left": 201.6, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 48, "left": 354.6, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -81.6,
+      "left": 9.05,
+      "rotate": 90,
+      "attrs": { "value": "470" }
+    },
+    { "type": "chip-capacitor", "id": "chip1", "top": 77.82, "left": 225.6, "attrs": {} },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring2",
+      "top": -268.16,
+      "left": 116.39,
+      "attrs": { "pixels": "16" }
+    }
+  ],
+  "connections": [
+    [ "ir1:DAT", "nano:11", "yellow", [ "v38.4", "h-105.1" ] ],
+    [ "ir1:VCC", "ring1:VCC", "red", [ "h-9.6", "v38.4", "h-96" ] ],
+    [ "ir1:GND", "ring1:GND", "blue", [ "h-19.2", "v38.4", "h-96" ] ],
+    [ "vcc1:VCC", "nano:VIN", "red", [ "v19.2", "h-57.6" ] ],
+    [ "vcc1:VCC", "ring1:VCC", "red", [ "v19.2", "h-220.8", "v-105.6", "h38.4" ] ],
+    [
+      "gnd1:GND",
+      "ring1:GND",
+      "blue",
+      [ "v-9.6", "h19.2", "v76.8", "h-403.2", "v-144", "h38.4" ]
+    ],
+    [ "ring1:DIN", "r1:1", "white", [ "v0" ] ],
+    [ "r1:2", "nano:10", "white", [ "h0" ] ],
+    [ "vcc1:VCC", "chip1:+", "red", [ "v0" ] ],
+    [ "gnd1:GND", "chip1:-", "blue", [ "v-9.6", "h-19.2", "v57.6" ] ],
+    [ "ring1:DOUT", "ring2:DIN", "white", [ "v9.6", "h124.8" ] ],
+    [ "ring2:GND", "ir1:GND", "blue", [ "v0", "h-57.6", "v48" ] ],
+    [ "gnd1:GND", "nano:GND.1", "blue", [ "v-9.6", "h19.2", "v76.8", "h-239.5" ] ],
+    [ "ring2:VCC", "ir1:VCC", "red", [ "v19.2", "h-57.6", "v38.4" ] ]
+  ],
+  "dependencies": {}
+}

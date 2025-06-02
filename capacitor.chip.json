@@ -1,0 +1,11 @@
+{
+  "name": "capacitor(1000uf)",
+  "author": "Ali Rashidi",
+  "pins": [
+    "+",
+    "",
+    "",
+    "-"
+  ],
+  "controls": []
+}
